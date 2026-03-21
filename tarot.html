@@ -1,0 +1,192 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+
+    <style type="text/css" media="screen">
+        table, th, td {
+             border: 1px solid;
+        }
+       
+        .conteneurscores {
+            width:100%;
+            overflow-y: scroll;
+        }
+
+        .tablescores
+        {
+            font-size: larger;
+
+            tr:nth-child(even) td {
+                background-color: #49ee70;
+            }
+
+            tr:nth-child(odd) td {
+                background-color: #ffffe9;
+            }
+
+            td:nth-child(1)
+            {
+                position: sticky;
+                left: 0; 
+                z-index: 5; 
+            }
+        }
+ 
+
+    </style>
+
+    <div id="bloccreation">
+        <button id="quatre">quatre joueurs</button>
+        <button id="cinq">cinq joueurs</button>
+    </div>
+    
+    <div id="blocjeu" style="visibility: collapse;">
+        <table>             
+            <tbody id="nombreparties">    
+    
+            </tbody> 
+        </table>
+        <br />
+        <br />
+        <div class="conteneurscores">    
+            <table class="tablescores">
+                
+                <tbody id="score">
+
+        
+        
+                </tbody>
+    
+            </table>
+        </div>
+
+        <br />
+        <br />
+
+        
+        <div id='controles'>
+            <label for="preneur">preneur&nbsp;:</label>
+            <select id="preneur">
+            </select>
+            <div id="blocpartenaire">
+                <label for="partenaire">partenaire&nbsp;:</label>
+                <select id="partenaire">  
+                </select>
+            </div>
+            <label for="enchere">enchère&nbsp;:</label>
+            <select id="enchere">        
+            </select>
+            <div>
+            <label for="bouts">nombre de bouts du preneur&nbsp;:</label>     
+            <select id="bouts">
+            </select>
+            </div>
+            <div id='nbrepointspreneur'>
+                <label for="pointspreneur">nombre de points du preneur&nbsp;:</label>     
+                <input id="pointspreneur">
+            </div>
+            <div id='nbrepointsadverse'>
+                <label for="pointsadverse">nombre de points des adversaires&nbsp;:</label>     
+                <input id="pointsadverse">
+            </div>
+            <div>
+            <label for="bout">petit au bout</label><br />
+            <select id="bout"></select>
+            <select id="reussitebout"></select>
+            <select id="quibout"></select>
+            </div>
+            <div>
+            <label for="poignee">poignée</label><br />
+            <select id="poignee"></select>
+            <select id="reussitepoignee"></select>
+            <select id="quipoignee"></select>
+            </div>
+            <br />
+            <button id="mettreajour">Mettre à jour nouvelle partie</button>
+            
+
+            <br />
+            <br />
+
+            <label for="autre">compléments&nbsp;:</label>
+            <select id="autre">        
+            </select>
+            <br />
+            <label for="beneficiaire">joueur bénéficiaire&nbsp;:</label>
+            <select id="beneficiaire">        
+            </select>
+            <br />
+            <br />
+            <button id="mettreajourcomplement">Mettre à jour complément</button>
+            <br />
+            <br />
+            <div>
+            <label for="autreaction">autres actions&nbsp;:</label>
+            <br />
+            <br />
+            <button id="scoreszero">Mettre les scores à zéro</button>
+            <br />
+            <br />
+            <button id="nouveauxnoms">Changer les noms</button>
+            </select>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src='tarot.js'></script>
+    <script>
+    
+
+        document.getElementById('quatre').addEventListener(
+            'click',
+            () => {
+               creer(4);
+            }
+        );
+
+        document.getElementById('cinq').addEventListener(
+            'click',
+            () => {
+               creer(5);
+            }
+        );
+    
+
+        document.getElementById('mettreajour').addEventListener(
+            'click',
+            () => {
+               actualiserScoresClick();
+            }
+        );
+
+        document.getElementById('mettreajourcomplement').addEventListener(
+            'click',
+            () => {
+               mettreAJourComplementClick();
+            }
+        );
+        document.getElementById('scoreszero').addEventListener(
+            'click',
+            () => {
+               remiseAzero(nombreJoueurs);
+            }
+        );
+        document.getElementById('nouveauxnoms').addEventListener(
+            'click',
+            () => {
+               nouveauPlateau(nombreJoueurs);
+            }
+        );
+    </script>
+</body>
+
+</html>
