@@ -1,0 +1,180 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+
+    <style type="text/css" media="screen">
+        table, th, td {
+             border: 1px solid;
+        }
+       
+        .conteneurscores {
+            width:100%;
+            overflow-y: scroll;
+        }
+
+        .tablescores
+        {
+            font-size: larger;
+
+            tr:nth-child(even) td {
+                background-color: #49ee70;
+                text-align: center;
+            }
+
+            tr:nth-child(odd) td {
+                background-color: #ffffe9;
+                text-align: center;
+            }
+
+            td:nth-child(1)
+            {
+                position: sticky;
+                left: 0; 
+                z-index: 5;
+                text-align: center; 
+            }
+        }
+        
+
+    </style>
+
+
+    <div id="blocdepart">
+        <button id="lancement">partie libre</button>
+        <button id="tarot"><a href="tarot 4-5-6.html">tarot</a></button>      
+    </div>
+
+    <div id="bloccreation" style="visibility: collapse;">
+        <div id="bloctourdetable">
+        <label for="tourdetable">indiquer le nombre de joueurs&nbsp;:</label>
+        <select id="tourdetable">  
+        </select>
+        </div>
+
+        <div id="bloctourdetable2">
+        <label for="tourdetable2">indiquer le nom des joueurs&nbsp;:</label>
+        <button id ="nomjoueurs">nom des joueurs</button>
+        </div>
+        
+    
+    <div id="blocjeu" style="visibility: collapse;">
+
+    <div class="conteneurscores"> 
+            <br />
+            <br /><br />
+            <br />   
+            <table class="tablescores">
+                
+                <tbody id="score">
+                    <label for="score">partie à comptabiliser</label>
+                   
+        
+                </tbody>
+    
+            </table>
+
+            
+
+    </div>
+
+    <br />
+    <br />
+
+        
+    <div id='controles'>
+            
+            <div id='nbrepointjoueur1'>
+                <label for="pointsjoueur1">nombre de points de joueur1&nbsp;:</label>     
+                <input id="pointsjoueur1">
+            </div>
+            <div id='nbrepointjoueur2'>
+                <label for="pointsjoueur2">nombre de points de joueur2&nbsp;:</label>     
+                <input id="pointsjoueur2">
+            </div>
+            <div id='nbrepointjoueur3'>
+                <label for="pointsjoueur3">nombre de points de joueur3&nbsp;:</label>     
+                <input id="pointsjoueur3">
+            </div>
+            <div id='nbrepointjoueur4'>
+                <label for="pointsjoueur4">nombre de points de joueur4&nbsp;:</label>     
+                <input id="pointsjoueur4">
+            </div>
+            <div id='nbrepointjoueur5'>
+                <label for="pointsjoueur5">nombre de points de joueur5&nbsp;:</label>     
+                <input id="pointsjoueur5">
+            </div>
+            <div id='nbrepointjoueur6'>
+                <label for="pointsjoueur6">nombre de points de joueur6&nbsp;:</label>     
+                <input id="pointsjoueur6">
+            </div>
+            <div id='nbrepointjoueur7'>
+                <label for="pointsjoueur7">nombre de points de joueur7&nbsp;:</label>     
+                <input id="pointsjoueur7">
+            </div>
+            <div id='nbrepointjoueur8'>
+                <label for="pointsjoueur8">nombre de points de joueur8&nbsp;:</label>     
+                <input id="pointsjoueur8">
+            </div>
+            <div id='nbrepointjoueur9'>
+                <label for="pointsjoueur9">nombre de points de joueur9&nbsp;:</label>     
+                <input id="pointsjoueur9">
+            </div>
+            <div id='nbrepointjoueur10'>
+                <label for="pointsjoueur10">nombre de points de joueur10&nbsp;:</label>     
+                <input id="pointsjoueur10">
+            </div>
+            <div id='nbrepointjoueur11'>
+                <label for="pointsjoueur11">nombre de points de joueur11&nbsp;:</label>     
+                <input id="pointsjoueur11">
+            </div>
+            <div id='nbrepointjoueur12'>
+                <label for="pointsjoueur12">nombre de points de joueur12&nbsp;:</label>     
+                <input id="pointsjoueur12">
+            </div>
+            
+            <br />
+            <button id="mettreajour">Mettre à jour nouvelle partie</button>
+            
+
+            <br />
+            <br />
+            
+    </div>
+    
+
+
+    <script src='jeuaplusieurs.js'></script>
+    <script>
+    
+
+        document.getElementById('lancement').addEventListener(
+            'click',
+            () => {
+               preciserNombreJoueurs();
+            }
+        );
+
+        document.getElementById('nomjoueurs').addEventListener(
+            'click',
+            () => {
+               capterNombreJoueurs();
+            }
+        );
+        document.getElementById('mettreajour').addEventListener(
+            'click',
+            () => {
+               miseAJour();
+            }
+        );
+        
+
+    </script>
+</body>
+
+</html>
