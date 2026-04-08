@@ -6,6 +6,7 @@ scoresAvant = []
 scoresApres = []
 scoresPartie = []
 nombreParties = 1
+historiqueContrat = [[0,0,0]]
 
 function creer(nombre){
     for (i=0;i<nombre;i=i+1 ){
@@ -84,8 +85,41 @@ function acterDernierePartie(){
     coeffPoignee = parseInt(coeffPoigneeStr);
     nombrePointsChelemStr = document.getElementById('grandchelem').value ;
     nombrePointsChelem = parseInt(nombrePointsChelemStr);
-    
 
+    contratJ = [];
+    for (j=0;j<nombreJoueurs;j=j+1){
+        if (joueurs[j] == preneur){
+            contratJ.push('J'+(j+1));
+
+        }
+    }
+
+    if ( nombreJoueurs != 4){
+        for ( j=0;j<nombreJoueurs;j=j+1){
+            if (joueurs[j] == partenaire){
+                contratJ.push('J'+(j+1));
+            }
+        }
+    } else {
+        contratJ.push(0);
+
+    }
+
+    if (coeff == 1){
+        contratJ.push('P');
+
+    } else if (coeff == 2){
+        contratJ.push('G');
+
+    } else if (coeff == 4) {
+        contratJ.push('GS');
+
+    } else {
+        contratJ.push('GC');
+
+    }
+    
+    console.log('contratJ ->'+contratJ)
     
     if (nombrePointsPreneurStr != ""){
         total = nombrePointsPreneur - contrat
@@ -106,11 +140,29 @@ function acterDernierePartie(){
         total = total + 25 ; 
     }
     console.log('total -->'+total)
-    if (total <= 9900){
+    if (total <= 9900 & nombrePointsChelem == 0){
         pointsCartes = total;
         pointstotal = pointsCartes+nombrePointsPetitAuBout*equipeQuiAlePetitAuBout;
         annonce = nombrePointsPoignee*coeffPoignee+nombrePointsChelem;
         nombreParties = nombreParties+1;
+        historiqueContrat.push(contratJ);
+
+    }
+    if (total <= 9900 & nombrePointsChelem != 0){
+        pointsCartes = total;
+        pointstotal = nombrePointsChelem;
+        annonce = 0;
+        if (nombrePointsChelem == 400){
+            contratJ[2]= "Ch.D.R";
+
+        } else if (nombrePointsChelem == 200){
+            contratJ[2]= "Ch.nD.R";
+
+        } else {
+            contratJ[2] = "Ch.D.L"
+        }
+        nombreParties = nombreParties+1;
+        historiqueContrat.push(contratJ);
 
     }
     actualiserScores(preneur,partenaire,coeff,pointstotal,annonce);
@@ -134,6 +186,9 @@ function actualiserScores(preneur,partenaire,coeff,total,annonce){
 
 function calculScoreCartes(preneur,partenaire,coeff,total,annonce){
     scoreCartes=[]
+    if (nombrePointsChelem != 0 ){
+        coeff = 1;
+    }
 
     for (i=0;i<nombreJoueurs;i=i+1){
         if ( nonJoueur == joueurs[i] & nombreJoueurs == 6){
@@ -172,14 +227,40 @@ function afficherScoresDernierePartie(){
 
 
 function afficherHistoriqueScores(){
-    html ="<tr><td>partie n°</td>";
-    for (j=0;j<nombreParties;j=j+1){
+    if (nombreParties > 1){
+        depart = 1;
+
+    } else {
+        depart = 0;
+
+    }
+    html ="<tr><td>preneur</td>";
+    for (j=depart;j<nombreParties;j=j+1){
+        html = html+'<td>'+historiqueContrat[j][0]+'</td>';
+    }
+    html = html + '</tr>';
+    html = html + "<tr><td>contrat</td>";
+    for (j=depart;j<nombreParties;j=j+1){
+        html = html+'<td>'+historiqueContrat[j][2]+'</td>';
+    }
+    html = html + '</tr>';
+    if ( nombreJoueurs != 4){
+        html = html + "<tr><td>partenaire</td>";
+        for (j=depart;j<nombreParties;j=j+1){
+            html = html+'<td>'+historiqueContrat[j][1]+'</td>';
+        }
+        html = html + '</tr>';
+    }
+
+    
+    html = html +"<tr><td>partie n°</td>";
+    for (j=depart;j<nombreParties;j=j+1){
         html = html+'<td>'+j+'</td>';
     }
     html = html + '</tr>';
     for (i=0;i<nombreJoueurs;i=i+1){
         html=html+'<tr><td>'+joueurs[i]+'</td>'
-        for (j=0;j<nombreParties;j=j+1){
+        for (j=depart;j<nombreParties;j=j+1){
             html = html + '<td>'+historique[j][i]+'</td>';
         }
         html = html + '</tr>';
@@ -246,7 +327,7 @@ function reussitepoignee(){
 }
 
 function grandChelem(){
-    html = '<option value = 0>rien</option><option value=400>grand chelem demandé et réussi</option><option value = 200>grand chelem non demandé et réussi</option><option value = -200>grand chelem demandé et raté</option>'
+    html = '<option value = 0>rien</option><option value=400>grand chelem demandé et réussi</option><option value = 200>grand chelem non demandé et réussi</option><option value = -200>grand chelem demandé et loupé</option>'
     document.getElementById('grandchelem').innerHTML = html
 }
 
@@ -271,7 +352,8 @@ function remiseAzero(nombreJoueurs){
 
     }
     
-    historique = [partie]
+    historique = [partie];
+    historiqueContrat = [[0,0,0]];
     afficherHistoriqueScores();
     
 }
