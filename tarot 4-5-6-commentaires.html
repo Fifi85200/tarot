@@ -6,8 +6,51 @@
 </head>
 
 <body>
-    <div id="commentairestarotaplusieurs"><br />
+
+    <style type="text/css" media="screen">
+        table, th, td {
+             border: 1px solid;
+        }
+       
+        .conteneurscores {
+            width:100%;
+            overflow-y: scroll;
+        }
+
+        .tablescores
+        {
+            font-size: larger;
+
+            tr:nth-child(even) td {
+                background-color: #49ee70;
+                text-align: center;
+            }
+
+            tr:nth-child(odd) td {
+                background-color: #ffffe9;
+                text-align: center;
+            }
+
+            td:nth-child(1)
+            {
+                position: sticky;
+                left: 0; 
+                z-index: 5;
+                text-align: center; 
+            }
+        }
+        .center {
+             text-align: center;
+        }
+        
+
+    </style>
+
+    <div id="commentairestarotaplusieurs" class="center"><br />
+        <h2>Parties de tarot</h2>
         <p> la page <b>"tarot"</b> permet de faire les comptes d'une table de 4 ou 5 ou 6 joueurs avec tableau historique des parties jouées.</p>
+    </div>
+    <div id="progression">
         <br />
         <p>Etape n°1 : choisir le nombre de joueurs concernés en utilisant le bouton correspondant.</p>
         <p>Etape n°2 : nommer les joueurs, grâce à une boite de dialogue, en utilisant le bouton "nom des joueurs".</p>
@@ -16,13 +59,16 @@
         <p>Pour les parties à 5 ou 6 joueurs, bien indiquer le preneur et le partenaire ( ce peut être le même joueur par décision murie ou par malchance ).</p>
         <p>A chaque nouvelle partie, il est possible d'indiquer, avec une précision de 0,5 pt, le score du preneur ou le score de la défense : l'un des deux suffit. S'il n'y a rien, rien ne se passe.</p>
         <p>En cas de grand chelem, il faut indiquer un nombre de points pour l'une des équipes ( peu importe le nombre non nul ). Ensuite, la mise à jour comptera +400 pts si "chelem demandé et réussi", +200 pts 
-            si "chelem non demandé et réussi" et enfin -200 pts si "chelem demandé et raté.Pour un chelem non demandé et non réussi, on  fait comme dab ! <b>Et il n'est pas prévu que ce soit la défense qui demande ou réalise le grand chelem !!</b></p>
+            si "chelem non demandé et réussi" et enfin -200 pts si "chelem demandé et raté". Pour un chelem non demandé et non réussi, on  fait comme dab ! <b>Et il n'est pas prévu que ce soit la défense qui demande ou réalise le grand chelem !!</b></p>
         <br />
         <br />
         <p>Cette fenêtre de commentaires reste ouverte, maintenant il faut se lancer.</p>
     </div>
 
-    <div id="blocdepart">
+    <div id="blocdepart" class = "center">
+        <h2>Début de la feuille des comptes</h2>
+        <br />
+        <br />
         
         <button id="tarot"><a href="tarot 4-5-6.html" target="_blank">lancement dans une nouvelle fenêtre</a></button>      
     </div>
