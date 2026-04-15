@@ -6,8 +6,10 @@ scoresPartie = []
 scores = []
 
 function preciserNombreJoueurs(){
-    document.getElementById('bloccreation').style.visibility = 'visible'
-    document.getElementById('blocdepart').style.visibility = 'collapse'
+    document.getElementById('bloccreation').style.display = 'block'
+    document.getElementById('blocdepart').style.display = 'none'
+    document.getElementById('commentaires').style.display = 'none'
+    document.getElementById('commentairestarot').style.display = 'none'
     text = '<option value=1>1</option><option value=2>2</option><option value=3>3</option><option value=4>4</option>'
     text = text +'<option value=5>5</option><option value=6>6</option><option value=7>7</option><option value=8>8</option>'
     text = text + '<option value=9>9</option><option value=10>10</option><option value=11>11</option><option value=12>12</option>'
@@ -26,8 +28,13 @@ function capterNombreJoueurs(){
     //console.log("retour ->"+nombreJoueursStr);
     nombreJoueurs = parseInt(nombreJoueursStr);
     construireListe(nombreJoueurs);
-    document.getElementById('blocjeu').style.visibility = 'visible';
+    document.getElementById('blocjeu').style.display = 'block';
     afficherScores();
+    document.getElementById('bloctourdetable').style.display = 'none';
+
+    document.getElementById('bloctourdetable2').style.display = 'none';
+    document.getElementById('commentairespartielibre').style.display = 'none';
+    
 
 
 }
@@ -62,13 +69,15 @@ function afficherScores(){
     }
 
     for (i=nombreJoueurs+1;i<13;i=i+1){
-        document.getElementById('nbrepointjoueur'+i).style.visibility = 'collapse';
+        document.getElementById('nbrepointjoueur'+i).style.display = 'none';
     
     }
 
 }
 
 function miseAJour(){
+
+    
     scoresPartie = [];
     for (i=0;i<nombreJoueurs;i=i+1){
         mot = 'pointsjoueur'+(i+1);

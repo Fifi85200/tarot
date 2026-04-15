@@ -47,10 +47,37 @@
 
     <div id="blocdepart">
         <button id="lancement">partie libre</button>
-        <button id="tarot"><a href="tarot 4-5-6.html">tarot</a></button>      
+        <button id="tarot"><a href="tarot 4-5-6-commentaires.html">tarot</a></button>      
     </div>
 
-    <div id="bloccreation" style="visibility: collapse;">
+    <div id="commentaires">
+        <br />
+        <p><b>Cette application hyper simple n'envoie aucun renseignement en-dehors du site appelé et ne fait pas de sauvegarde</b></p>
+        <br />
+        <br />
+    </div>
+    <div id="commentairespartielibre">
+        <p> la page <b>"partie libre"</b> permet de faire les comptes d'une table de 12 joueurs maximum sans tableau historique des parties jouées</p>
+        <p>Il faut alors utiliser le bouton "partie libre"</p>
+        <p>Etape n°1 : choisir le nombre de joueurs concernés en utilisant le menu déroulant</p>
+        <p>Etape n°2 : nommer les joueurs, grâce à une boite de dialogue, en utilisant le bouton "nom des joueurs"</p>
+        <p>Il est conseillé de nommer les joueurs à la suite suivant le plan de table. En utilisant la commande "OK", les noms s'initialisent sans poésie mais avec rapidité</p>
+        <p>Il n'y a aucun contrôle sur les montants attribués aux joueurs</p>
+        <br />
+        <br />
+    </div>
+
+    <div id="commentairestarot">
+        <br />
+        <p> la page <b>"tarot"</b> permet de faire les comptes d'une table de 4 ou 5 ou 6 joueurs avec tableau historique des parties jouées</p>
+        <br />
+        <br />
+    
+        
+
+    </div>
+
+    <div id="bloccreation" style="display:none;">
         <div id="bloctourdetable">
         <label for="tourdetable">indiquer le nombre de joueurs&nbsp;:</label>
         <select id="tourdetable">  
@@ -63,7 +90,7 @@
         </div>
         
     
-    <div id="blocjeu" style="visibility: collapse;">
+    <div id="blocjeu" style="display:none;">
 
     <div class="conteneurscores"> 
             <br />
@@ -82,9 +109,6 @@
             
 
     </div>
-
-    <br />
-    <br />
 
         
     <div id='controles'>
@@ -138,12 +162,9 @@
                 <input id="pointsjoueur12">
             </div>
             
-            <br />
             <button id="mettreajour">Mettre à jour nouvelle partie</button>
             
 
-            <br />
-            <br />
             
     </div>
     
