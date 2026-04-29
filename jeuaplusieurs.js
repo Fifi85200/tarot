@@ -25,7 +25,6 @@ function capterLeCurseur(){
 
 function capterNombreJoueurs(){
     nombreJoueursStr= document.getElementById('tourdetable').value ;
-    //console.log("retour ->"+nombreJoueursStr);
     nombreJoueurs = parseInt(nombreJoueursStr);
     construireListe(nombreJoueurs);
     document.getElementById('blocjeu').style.display = 'block';

@@ -9,6 +9,7 @@ nombreParties = 1
 historiqueContrat = [[0,0,0]]
 
 function creer(nombre){
+    nombreJoueurs = nombre ;
     for (i=0;i<nombre;i=i+1 ){
         a = prompt("nom du joueur"+(i+1),"joueur"+(i+1));
         joueurs.push(a);
@@ -18,11 +19,13 @@ function creer(nombre){
 
     }
     historique.push(scoresAvant);
-    document.getElementById('bloccreation').style.visibility = 'collapse'
-    document.getElementById('blocjeu').style.visibility = 'visible'
+    if (nombreJoueurs != 4){
+        document.getElementById('bloccreation').style.visibility = 'collapse';
+    }
+    document.getElementById('blocjeu').style.visibility = 'visible';
 
 
-    nombreJoueurs = nombre
+    nombreJoueurs = nombre;
     afficherHistoriqueScores();
     if ( nombreJoueurs != 6){
         document.getElementById('mort').style.visibility = 'collapse';
@@ -35,7 +38,7 @@ function creer(nombre){
         selectionPartenaire();
     }
     else {
-        document.getElementById('blocpartenaire').style.visibility = 'collapse'
+        document.getElementById('blocpartenaire').style.visibility = 'collapse';
     }
     selectionEnchere();
     selectionBoutsGagnes();
@@ -188,7 +191,8 @@ function calculScoreCartes(preneur,partenaire,coeff,total,annonce){
     scoreCartes=[]
     if (nombrePointsChelem != 0 ){
         coeff = 1;
-    }
+    } 
+    
 
     for (i=0;i<nombreJoueurs;i=i+1){
         if ( nonJoueur == joueurs[i] & nombreJoueurs == 6){
