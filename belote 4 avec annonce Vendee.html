@@ -1,0 +1,206 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+
+    <style type="text/css" media="screen">
+        
+        table, th, td {
+             border: 1px solid;
+        }
+       
+        .conteneurscores {
+            width:100%;
+            overflow-y: scroll;
+        }
+
+        .tablescores
+        {
+            font-size: larger;
+
+            tr:nth-child(odd) td {
+                background-color: #10f542;
+                text-align: center;
+            }
+
+            
+
+            td:nth-child(1)
+            {
+                position: sticky;
+                left: 0; 
+                z-index: 5;
+                text-align: center; 
+            }
+        }
+        .tablehistoriquescores
+        {
+            font-size: larger;
+
+            tr:nth-child(even) td {
+                background-color: #49ee70;
+                text-align: center;
+            }
+
+           
+
+            tr:nth-child(odd) td {
+                background-color: #ffffe9;
+                text-align: center;
+            }
+
+            td:nth-child(1)
+            {
+                position: sticky;
+                background-color: #ffffe9;
+                left: 0; 
+                z-index: 5; 
+                text-align: center;
+            }
+            
+        }
+ 
+
+    </style>
+
+        
+    <div id="blocjeu" style="visibility: collapse;">
+        
+        <div class="conteneurscores"> 
+               
+            
+            
+            <table class="tablehistoriquescores">
+                
+                <tbody id="historiquescore">
+                    <label for="historiquescore">historique des parties</label>
+                    <br />
+                    <br />
+        
+                </tbody>
+    
+            </table>
+            <br />
+            <br />
+
+        </div>
+
+        
+        <div id='controles'>
+            <label>Nouvelle Partie</label>
+            <br />
+            <br />
+
+            <div id="quiPrend">
+                <label for="equipeQuiPrend">équipe qui prend&nbsp;:</label>
+                <select id="preneur">  
+                </select>
+            
+                <label for="belote">belote&nbsp;:</label>
+                <select id="belote">
+                </select>
+                <br />
+            <br />
+
+                <label for="listedannonces">annonces&nbsp;:</label>
+                <select id="listedannonces">
+                </select>
+
+                <label for="equipequialannonce">équipe qui a l'annonce&nbsp;:</label>
+                <select id="equipequialannonce">  
+                </select>
+            </div>
+            <br />
+            <br />
+            
+            
+            
+            <div id='nbrepointsNOUS'>
+                <label for="pointsNOUS">nombre de points pour NOUS&nbsp;:</label>     
+                <input type = "number" id="pointsNOUS">
+            </div>
+            <br />
+            <br />
+            <div id='nbrepointsEUX'>
+                <label for="pointsEUX">nombre de points pour EUX&nbsp;&nbsp;&nbsp;&nbsp;:</label>     
+                <input type = "number" id="pointsEUX">
+            </div>
+            
+            <br />
+            <button id="mettreajour">Mettre à jour nouvelle partie</button>
+            <br />
+            <br />
+            <button id="dernierlitige">Gérer le dernier litige</button>
+            <br />
+            <br />
+            <br />
+            <button id="avantdernierlitige">Gérer l'avant-dernier litige</button>
+            <br />
+            <br />
+            <br />
+            <button id="litige">Gérer les litiges</button>
+            <br />
+            <br />
+            <br />
+            <button id="suppressiondernierpartie">Supprimer la dernière partie</button>
+            <br />
+            <br />
+           
+
+        </div>
+
+    </div>
+
+
+    <script src='belote 4 avec annonce Vendee.js'></script>
+    <script>
+    
+        document.getElementById('mettreajour').addEventListener(
+            'click',
+            () => {
+               acterDernierePartie();
+            }
+        );
+
+
+        document.getElementById('dernierlitige').addEventListener(
+            'click',
+            () => {
+               dernierLitige();
+            }
+        );
+
+        document.getElementById('avantdernierlitige').addEventListener(
+            'click',
+            () => {
+               avantdernierLitige();
+            }
+        );
+        document.getElementById('litige').addEventListener(
+            'click',
+            () => {
+               litigetotal1();
+            }
+        );
+
+        document.getElementById('suppressiondernierpartie').addEventListener(
+            'click',
+            () => {
+               supprimerDernierePartie();
+            }
+        );
+
+        
+
+        // initialisation
+        creer(2);
+        //simulation(4);
+    </script>
+</body>
+
+</html>
